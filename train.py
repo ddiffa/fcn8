@@ -13,8 +13,8 @@ def sorted_fns(dir):
 if len(os.listdir('images')) != len(os.listdir('annotated')):
     generate_missing_json()
 
-image_paths = [os.path.join('images', x) for x in sorted_fns('images')]
-annot_paths = [os.path.join('annotated', x) for x in sorted_fns('annotated')]
+image_paths = [os.path.join('images', x) for x in os.listdir('images')]
+annot_paths = [os.path.join('annotated', x) for x in os.listdir('annotated')]
 
 if 'unet' in model_name:
     model = unet(pretrained=False, base=4)

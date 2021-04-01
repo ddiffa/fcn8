@@ -13,7 +13,7 @@ with contextlib.redirect_stdout(None):
 RUN = True
 frame_shape = (640, 480)
 target_shape = imshape[:2]
-save_dir = 'images'
+save_dir = 'images2'
 
 d_width = target_shape[0] // 2
 d_height = target_shape[1] // 2
@@ -24,7 +24,7 @@ y1 = frame_shape[0] // 2 + d_height
 
 if os.path.exists(save_dir) is False:
     os.mkdir(save_dir)
-images = sorted(os.listdir(save_dir), key=lambda x: int(x.split('.')[0]))
+images = os.listdir(save_dir)
 
 if images != []:
     tmp = images[-1]
