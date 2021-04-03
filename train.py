@@ -6,7 +6,6 @@ from utils import generate_missing_json
 from config import model_name, n_classes
 from models import unet, fcn_8
 
-
 def sorted_fns(dir):
     return sorted(os.listdir(dir), key=lambda x: int(x.split('.')[0]))
 
@@ -16,10 +15,12 @@ if len(os.listdir('images')) != len(os.listdir('annotated')):
 image_paths = [os.path.join('images', x) for x in os.listdir('images')]
 annot_paths = [os.path.join('annotated', x) for x in os.listdir('annotated')]
 
-if 'unet' in model_name:
-    model = unet(pretrained=False, base=4)
-elif 'fcn_8' in model_name:
-    model = fcn_8(pretrained=False, base=4)
+# if 'unet' in model_name:
+#     model = unet(pretrained=False, base=4)
+# elif 'fcn_8' in model_name:
+#     model = fcn_8(pretrained=False, base=4)
+
+model = fcn_8(pretrained=False, base=4)
 
 tg = DataGenerator(image_paths=image_paths, annot_paths=annot_paths,
                    batch_size=5, augment=True)
